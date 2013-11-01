@@ -12,6 +12,7 @@
 @optional
 
 - (void)assetDownloadSuccessful;
+- (void)assetDownloadFailed;
 
 @end
 

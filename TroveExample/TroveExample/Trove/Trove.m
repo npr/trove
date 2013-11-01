@@ -296,7 +296,7 @@ const NSString* ROOT_CACHE_DIR;
         error = [cacheOp error];
         
         if (error != nil) {
-            NSLog(@"Error encountered while precaching: %@", error);
+            NSLog(@"Trove Error: Error encountered while downloading asset: %@", error);
         }
         
         // Alert the delegate operation has finished

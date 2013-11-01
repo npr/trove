@@ -23,6 +23,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    //allow keyboard to hide if touched outside the textfields
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     self.sampleURL = @"http://archive.org/download/American1956_4/American1956_4_512kb.mp4";
     
     //Add this observer so the 'done' button on the movie player will exit out of the video
@@ -83,6 +90,36 @@
     
     // Show the play button since download was successful
     self.playBtn.hidden = NO;
+    
+}
+
+- (void)assetDownloadFailed {
+    
+    NSLog(@"Asset Failed to Download");
+}
+
+#
+# pragma mark - UITextField Delegate Methods
+#
+
+- (void)dismissKeyboard {
+    [self.assetTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    if ( textField.text.length > 0 ) {
+        
+        // IMPORTANT: Make sure URL is valid and cache-control header allows the asset to be cached.
+        // Example of a downloadble asset: Cache-Control = max-age=2000
+        // Example of a NON-downloadable asset: Cache-Control = no-cache
+        [[Trove sharedInstance] cacheAsset:[NSURL URLWithString:textField.text]];
+    }
     
 }
 
