@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^DelegateSuccess) (NSData *theData);
-typedef void (^DelegateFailure) (NSError *theError);
-typedef void (^DelegateComplete) (NSString *completeURL);
+@protocol TroveDelegate <NSObject>
+@optional
 
-@interface Trove : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-{
+- (void)assetDownloadSuccessful;
+
+@end
+
+@interface Trove : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
     
+    id <TroveDelegate> delegate;
 }
 
 + (Trove *) sharedInstance;
@@ -27,5 +30,7 @@ typedef void (^DelegateComplete) (NSString *completeURL);
 
 // Kill all inflight cache requests
 - (void)cancelAllRequests;
+
+@property (nonatomic, retain) id <TroveDelegate> delegate;
 
 @end

@@ -299,6 +299,15 @@ const NSString* ROOT_CACHE_DIR;
             NSLog(@"Error encountered while precaching: %@", error);
         }
         
+        // Alert the delegate operation has finished
+        if ( cacheOp.isFinished ) {
+            
+            if ( [self.delegate respondsToSelector:@selector(assetDownloadSuccessful)] ) {
+            
+                [self.delegate assetDownloadSuccessful];
+            }
+        }
+        
         [cacheOp removeObserver:self forKeyPath:@"isFinished"];
         cacheOp = nil;
     }

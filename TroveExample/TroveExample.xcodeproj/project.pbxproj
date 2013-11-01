@@ -14,7 +14,6 @@
 		9ADA31FE1822DD6C003BD3F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA31FD1822DD6C003BD3F9 /* main.m */; };
 		9ADA32021822DD6C003BD3F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA32011822DD6C003BD3F9 /* AppDelegate.m */; };
 		9ADA32051822DD6C003BD3F9 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADA32031822DD6C003BD3F9 /* Main_iPhone.storyboard */; };
-		9ADA32081822DD6C003BD3F9 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADA32061822DD6C003BD3F9 /* Main_iPad.storyboard */; };
 		9ADA320B1822DD6C003BD3F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA320A1822DD6C003BD3F9 /* ViewController.m */; };
 		9ADA320D1822DD6C003BD3F9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADA320C1822DD6C003BD3F9 /* Images.xcassets */; };
 		9ADA32141822DD6D003BD3F9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADA32131822DD6D003BD3F9 /* XCTest.framework */; };
@@ -49,7 +48,6 @@
 		9ADA32001822DD6C003BD3F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ADA32011822DD6C003BD3F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9ADA32041822DD6C003BD3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		9ADA32071822DD6C003BD3F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		9ADA32091822DD6C003BD3F9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9ADA320A1822DD6C003BD3F9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9ADA320C1822DD6C003BD3F9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				9ADA32001822DD6C003BD3F9 /* AppDelegate.h */,
 				9ADA32011822DD6C003BD3F9 /* AppDelegate.m */,
 				9ADA32031822DD6C003BD3F9 /* Main_iPhone.storyboard */,
-				9ADA32061822DD6C003BD3F9 /* Main_iPad.storyboard */,
 				9ADA32091822DD6C003BD3F9 /* ViewController.h */,
 				9ADA320A1822DD6C003BD3F9 /* ViewController.m */,
 				9ADA320C1822DD6C003BD3F9 /* Images.xcassets */,
@@ -262,7 +259,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ADA32081822DD6C003BD3F9 /* Main_iPad.storyboard in Resources */,
 				9ADA320D1822DD6C003BD3F9 /* Images.xcassets in Resources */,
 				9ADA32051822DD6C003BD3F9 /* Main_iPhone.storyboard in Resources */,
 				9ADA31FC1822DD6C003BD3F9 /* InfoPlist.strings in Resources */,
@@ -326,14 +322,6 @@
 				9ADA32041822DD6C003BD3F9 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		9ADA32061822DD6C003BD3F9 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9ADA32071822DD6C003BD3F9 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		9ADA321C1822DD6D003BD3F9 /* InfoPlist.strings */ = {
@@ -430,6 +418,7 @@
 				GCC_PREFIX_HEADER = "TroveExample/TroveExample-Prefix.pch";
 				INFOPLIST_FILE = "TroveExample/TroveExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,6 +432,7 @@
 				GCC_PREFIX_HEADER = "TroveExample/TroveExample-Prefix.pch";
 				INFOPLIST_FILE = "TroveExample/TroveExample-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -508,6 +498,7 @@
 				9ADA32251822DD6D003BD3F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9ADA32261822DD6D003BD3F9 /* Build configuration list for PBXNativeTarget "TroveExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +507,7 @@
 				9ADA32281822DD6D003BD3F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -204,8 +204,6 @@
         [self cancelled];
         return;
     } else {
-        
-        
         [self done];
     }
 }
