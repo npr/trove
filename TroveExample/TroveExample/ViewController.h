@@ -14,9 +14,13 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *downloadBtn;
 @property (nonatomic, strong) IBOutlet UIButton *playBtn;
+@property (nonatomic, strong) IBOutlet UIButton *viewPathBtn;
 @property (nonatomic, strong) IBOutlet UITextField *assetTextField;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *assetActivityView;
 
-- (IBAction)downloadSampleVide:(id)sender;
+- (IBAction)downloadSampleVideo:(id)sender;
 - (IBAction)playVideo:(id)sender;
+- (IBAction)viewAssetSource:(id)sender;
 
 @end

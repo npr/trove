@@ -38,11 +38,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="downloadSampleVide:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kGj-Ru-smM"/>
+                                    <action selector="downloadSampleVideo:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XTs-vC-vih"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3YC-dg-BLO">
-                                <rect key="frame" x="30" y="324" width="261" height="30"/>
+                                <rect key="frame" x="30" y="314" width="261" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter an asset URL, you would like to download:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="Plr-iK-7IH">
-                                <rect key="frame" x="30" y="280" width="261" height="36"/>
+                                <rect key="frame" x="30" y="273" width="261" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
@@ -73,13 +73,35 @@
                                     <action selector="playVideo:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7Ti-4m-VGO"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="b1G-4U-TbX">
+                                <rect key="frame" x="150" y="227" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Pg0-Jw-Xmn">
+                                <rect key="frame" x="150" y="374" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qG-Wh-MJr">
+                                <rect key="frame" x="61" y="362" width="198" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="View Asset Path">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewAssetSource:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cld-Cf-aa5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="b1G-4U-TbX" id="tXB-y5-OIi"/>
+                        <outlet property="assetActivityView" destination="Pg0-Jw-Xmn" id="FcH-yB-8CA"/>
                         <outlet property="assetTextField" destination="3YC-dg-BLO" id="aZB-Bv-mnf"/>
                         <outlet property="downloadBtn" destination="twF-B4-zMi" id="3Lq-Di-fOE"/>
                         <outlet property="playBtn" destination="wxa-Ef-hwJ" id="WCq-EC-jCp"/>
+                        <outlet property="viewPathBtn" destination="2qG-Wh-MJr" id="N3v-je-ePX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

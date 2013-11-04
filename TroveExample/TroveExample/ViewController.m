@@ -12,6 +12,7 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) NSString *sampleURL;
+@property (nonatomic, strong) NSString *userAssetURL;
 @property (nonatomic, strong) MPMoviePlayerController *player;
 
 @end
@@ -38,6 +39,10 @@
     
     // Hide the play video button until the video is downloaded
     self.playBtn.hidden = YES;
+    self.viewPathBtn.hidden = YES;
+    
+    [self.activityView stopAnimating];
+    [self.assetActivityView stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,10 +60,12 @@
                                                     name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
 }
 
-- (IBAction)downloadSampleVide:(id)sender {
+- (IBAction)downloadSampleVideo:(id)sender {
     
     [[Trove sharedInstance] setDelegate:self];
     [[Trove sharedInstance] cacheAsset:[NSURL URLWithString:self.sampleURL]];
+    
+    [self.activityView startAnimating];
 }
 
 - (IBAction)playVideo:(id)sender {
@@ -86,16 +93,41 @@
 # pragma mark - Trove Delegate Methods
 #
 
-- (void) assetDownloadSuccessful {
+- (void) assetDownloadSuccessful: (NSURL*)assetPath {
     
-    // Show the play button since download was successful
-    self.playBtn.hidden = NO;
-    
+    // Check to see if the sample video is on disk
+    NSURL *url = [[Trove sharedInstance] assetURL:[NSURL URLWithString:self.sampleURL]];
+
+    // Performing this check to show appropriate UI for the sample video provided
+    if ( [assetPath.absoluteString isEqualToString:url.absoluteString] ) {
+        [self.activityView stopAnimating];
+        
+        // Show the play button since download was successful
+        self.playBtn.hidden = NO;
+        
+    } else {
+        
+        // This will show the user entered asset paths,
+        // if they are valid and downloaded successfully
+        
+        [self.assetActivityView stopAnimating];
+        self.viewPathBtn.hidden = NO;
+        
+        // store the path so the UIAlertView can display it
+        self.userAssetURL = assetPath.absoluteString;
+    }
 }
 
 - (void)assetDownloadFailed {
     
-    NSLog(@"Asset Failed to Download");
+    [self.activityView stopAnimating];
+    [self.assetActivityView stopAnimating];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Trove Error"
+                                                        message:@"Asset failed to download"
+                                                       delegate:self
+                                              cancelButtonTitle:Nil otherButtonTitles:@"OK",nil];
+    [alertView show];
 }
 
 #
@@ -118,9 +150,20 @@
         // IMPORTANT: Make sure URL is valid and cache-control header allows the asset to be cached.
         // Example of a downloadble asset: Cache-Control = max-age=2000
         // Example of a NON-downloadable asset: Cache-Control = no-cache
+        [[Trove sharedInstance] setDelegate:self];
         [[Trove sharedInstance] cacheAsset:[NSURL URLWithString:textField.text]];
+        
+        [self.assetActivityView startAnimating];
     }
+}
+
+- (IBAction)viewAssetSource:(id)sender {
     
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Asset Path"
+                                                        message:self.userAssetURL
+                                                       delegate:self
+                                              cancelButtonTitle:Nil otherButtonTitles:@"OK",nil];
+    [alertView show];
 }
 
 @end

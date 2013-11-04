@@ -38,7 +38,7 @@ const NSString* ROOT_CACHE_DIR;
 
 
 @implementation Trove
-
+@synthesize delegate;
 
 + (void)initialize {
     
@@ -297,14 +297,23 @@ const NSString* ROOT_CACHE_DIR;
         
         if (error != nil) {
             NSLog(@"Trove Error: Error encountered while downloading asset: %@", error);
+            
+            if ( [self.delegate respondsToSelector:@selector(assetDownloadFailed)] ) {
+                
+                [self.delegate assetDownloadFailed];
+            }
         }
         
         // Alert the delegate operation has finished
         if ( cacheOp.isFinished ) {
             
-            if ( [self.delegate respondsToSelector:@selector(assetDownloadSuccessful)] ) {
+            if ( [self.delegate respondsToSelector:@selector(assetDownloadSuccessful:)] ) {
             
-                [self.delegate assetDownloadSuccessful];
+                NSString *assetPath = [self.class finishedAssetPath:cacheOp.connectionURL];
+                if ( [self.class doesFileExist:assetPath] ) {
+                
+                     [self.delegate assetDownloadSuccessful:[NSURL fileURLWithPath:assetPath]];
+                }
             }
         }
         
@@ -312,5 +321,6 @@ const NSString* ROOT_CACHE_DIR;
         cacheOp = nil;
     }
 }
+
 
 @end

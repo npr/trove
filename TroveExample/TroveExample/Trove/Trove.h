@@ -11,7 +11,7 @@
 @protocol TroveDelegate <NSObject>
 @optional
 
-- (void)assetDownloadSuccessful;
+- (void)assetDownloadSuccessful:(NSURL*)assetPath;
 - (void)assetDownloadFailed;
 
 @end
