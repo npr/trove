@@ -11,20 +11,23 @@ stop using your app.
  
 ## Usage
 
-### Cache a media asset
+#### Cache a media asset
 ```objective-c
 NSString *sampleURL = @"http://foo.org/fooBar.mp4";
 [[Trove sharedInstance] cacheAsset:[NSURL URLWithString:sampleURL]];
 ```
-### Retrieve a media asset
+#### Retrieve a media asset
   This method will return the locally stored file URL, if it is not in the cache directory, the original asset URL will be returned.
 ```objective-c
 NSString *sampleURL = @"http://foo.org/fooBar.mp4";
 [[Trove sharedInstance] assetURL:[NSURL URLWithString:sampleURL]];
 ```
+#### Optional delegate methods
+```objective-c
+- (void)assetDownloadSuccessful:(NSURL*)assetPath;
+- (void)assetDownloadFailed;
+```
 
-
-
-### License
+## License
 
 Code is licensed under [MIT License Terms](https://github.com/npr/trove/blob/master/LICENSE).
