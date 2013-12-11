@@ -29,6 +29,10 @@ NSString *sampleURL = @"http://foo.org/fooBar.mp4";
 - (void)assetDownloadFailed:(NSError*)error;
 ```
 
+## Credits
+
+Trove was developed by [Michael Seifollahi](https://github.com/mikeseif) and [Mikhail Sinanan](https://github.com/mikhaiS).
+
 ## License
 
 Code is licensed under [MIT License Terms](https://github.com/npr/trove/blob/master/LICENSE).
