@@ -7,6 +7,7 @@ stop using your app.
 
 ## Requirements 
 - Foundation.framework
+- Trove.framework
 - Reachability.h (included in the example project and found [here](https://developer.apple.com/Library/ios/samplecode/Reachability/Introduction/Intro.html))
  
 ## Usage
@@ -25,7 +26,7 @@ NSString *sampleURL = @"http://foo.org/fooBar.mp4";
 #### Optional delegate methods
 ```objective-c
 - (void)assetDownloadSuccessful:(NSURL*)assetPath;
-- (void)assetDownloadFailed;
+- (void)assetDownloadFailed:(NSError*)error;
 ```
 
 ## License
