@@ -33,8 +33,8 @@
 // Can't be a #define since most wait till load
 const NSString* ROOT_CACHE_DIR;
 
-//Size of cached assets in DONE_DIR, set to 50mb currently
-#define CACHE_SIZE 50*1e6
+//Size of cached assets in DONE_DIR
+#define CACHE_SIZE 100*1e6
 
 
 @implementation Trove
@@ -245,6 +245,7 @@ const NSString* ROOT_CACHE_DIR;
 // Initiates download
 - (void)cacheAsset:(NSURL *)url  {
     if (url == nil) {
+        NSLog(@"URL can't be nil");
         return;
     }
     
@@ -287,18 +288,19 @@ const NSString* ROOT_CACHE_DIR;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    // TODO: Handle errors (if needed)
     NSError *error;
     
     if ([object isKindOfClass:[TroveOperation class]]) {
         TroveOperation *cacheOp = (TroveOperation *)object;
         error = [cacheOp error];
         
-        // Alert the delegate the operation has failed
         if (error != nil) {
+            NSLog(@"Trove Error: Error encountered while downloading asset: %@", error);
             
-            if ( [self.delegate respondsToSelector:@selector(assetDownloadFailed:)] ) {
+            if ( [self.delegate respondsToSelector:@selector(assetDownloadFailed)] ) {
                 
-                [self.delegate assetDownloadFailed:error];
+                [self.delegate assetDownloadFailed];
             }
         }
         

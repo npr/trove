@@ -118,7 +118,7 @@
     }
 }
 
-- (void)assetDownloadFailed:(NSError*)error {
+- (void)assetDownloadFailed {
     
     [self.activityView stopAnimating];
     [self.assetActivityView stopAnimating];
