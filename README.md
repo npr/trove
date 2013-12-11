@@ -29,6 +29,20 @@ NSString *sampleURL = @"http://foo.org/fooBar.mp4";
 - (void)assetDownloadFailed:(NSError*)error;
 ```
 
+## Credits
+
+Trove was developed by [Michael Seifollahi](https://github.com/mikeseif) and [Mikhail Sinanan](https://github.com/mikhaiS). Nifty name "Trove" by [Irakli Nadareishvili](https://github.com/inadarei).
+
+## Contact
+
+Follow NPR Tech on Twitter ([@NPRTechTeam](https://twitter.com/NPRTechTeam))
+
+#### Maintainers 
+-  [Mikhail Sinanan](https://github.com/mikhaiS) ([@mikhaiS](https://twitter.com/mikhais))
+-  [Michael Seifollahi](https://github.com/mikeseif) ([@mikeseif](https://twitter.com/mikeseif))
+
+####
+
 ## License
 
 Code is licensed under [MIT License Terms](https://github.com/npr/trove/blob/master/LICENSE).
