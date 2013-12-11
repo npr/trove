@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Trove.h"
+#import <Trove/Trove.h>
 
 @interface ViewController : UIViewController <UITextFieldDelegate, TroveDelegate>
-
 
 @property (nonatomic, strong) IBOutlet UIButton *downloadBtn;
 @property (nonatomic, strong) IBOutlet UIButton *playBtn;
